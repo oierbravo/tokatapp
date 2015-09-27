@@ -1,0 +1,19 @@
+<section data-ng-controller="BatukidesController" data-ng-init="findOne()" class="view-batukide">
+	<div class="page-header">
+		<h1 data-ng-bind="batukide.name"></h1>
+	</div>
+	<div class="page-content">
+	
+			<div><h3><i class="fa fa-envelope"></i>{{batukide.email}}</div></h3>
+			<div><h3><i class="fa fa-phone"></i>{{batukide.tlf}}</div></h3>
+	
+	</div>
+	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == batukide.user._id))">
+		<a class="btn btn-primary" href="/#!/batukides/{{batukide._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+</section>

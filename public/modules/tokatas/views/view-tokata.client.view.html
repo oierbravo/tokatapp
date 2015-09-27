@@ -1,0 +1,28 @@
+<section class="view-tokata" data-ng-controller="TokatasController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="tokata.name"></h1>
+		
+	</div>
+<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == tokata.user._id))">
+		<a class="btn btn-primary" href="/#!/tokatas/{{tokata._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<div class="container page-content">
+	
+		<div><h3><i class="fa fa-globe"></i>{{tokata.place}}</div></h3>
+		<div><h4><i class="fa fa-calendar"></i>{{tokata.date}}</div></h4>
+		<div><h4> <i class="fa fa-clock-o"></i>{{tokata.hour}}</h4></div>
+		<div><h4> <i class="fa fa-pencil"></i>Notas:</h4><div class="well">{{tokata.notes}}</div></div>
+		<div>
+		
+			<div ng-repeat="batukide in tokata.batukides | orderBy:status:reverse">
+			<h4>{{batukide.name}} <i class="fa" ng-class="{'fa-check':batukide.status ==='yes','fa-remove':batukide.status ==='no','fa-question':batukide.status ==='maybe'}"></i><h4>
+			</div>
+		</div>
+	</div>
+	
+</section>
